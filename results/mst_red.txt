@@ -1,0 +1,70 @@
+MODULO B - Red de minimo costo (Kruskal)
+========================================
+
+1. Construccion deterministica del grafo
+Nodos: 20
+Aristas: 190
+Costo promedio de arista: 129.02
+
+Promedios de MonthlyCharges por grupo, redondeados a dos decimales:
+Nodo  0: 62.88
+Nodo  1: 61.30
+Nodo  2: 66.18
+Nodo  3: 64.83
+Nodo  4: 66.07
+Nodo  5: 66.56
+Nodo  6: 67.71
+Nodo  7: 64.69
+Nodo  8: 66.42
+Nodo  9: 62.89
+Nodo 10: 65.57
+Nodo 11: 64.48
+Nodo 12: 61.66
+Nodo 13: 63.85
+Nodo 14: 63.64
+Nodo 15: 69.05
+Nodo 16: 62.10
+Nodo 17: 65.67
+Nodo 18: 65.50
+Nodo 19: 64.19
+
+2. MST obtenido con Kruskal + Union-Find
+Peso total del MST: 2388
+Aristas incluidas (u, v, costo):
+(1, 12, 122)
+(1, 16, 123)
+(0, 1, 124)
+(1, 9, 124)
+(1, 14, 124)
+(1, 7, 125)
+(1, 11, 125)
+(1, 13, 125)
+(1, 19, 125)
+(1, 3, 126)
+(1, 10, 126)
+(1, 17, 126)
+(1, 18, 126)
+(1, 2, 127)
+(1, 4, 127)
+(1, 5, 127)
+(1, 8, 127)
+(1, 6, 129)
+(1, 15, 130)
+
+3. Justificacion de la eleccion codiciosa usando el lema del ciclo
+Kruskal procesa las aristas de menor a mayor costo. Cuando una arista conecta dos componentes distintas, se agrega porque no forma ciclo. Si una arista forma ciclo, ya existe un camino entre sus extremos con aristas seleccionadas previamente y, por el ordenamiento, esas aristas tienen costo menor o igual. Por el lema del ciclo, una arista de costo maximo dentro de un ciclo puede descartarse sin perder optimalidad; por eso la decision local de Kruskal mantiene la posibilidad de alcanzar un MST global.
+
+Arista concreta del grafo descartada por formar ciclo: (12, 16, 123).
+Camino ya seleccionado entre sus extremos al momento de evaluarla:
+(1, 12, 122)
+(1, 16, 123)
+La arista descartada tiene costo 123 y no es menor que las aristas del camino que cierra el ciclo; por tanto, puede eliminarse segun el lema del ciclo.
+
+4. Verificacion en el subgrafo inducido por los primeros 5 nodos
+Aristas seleccionadas manualmente al revisar los costos en orden ascendente y evitar ciclos:
+(0, 1, 124)
+(1, 3, 126)
+(1, 2, 127)
+(1, 4, 127)
+Peso total del MST del subgrafo de 5 nodos: 504
+La ejecucion de Kruskal sobre el mismo subgrafo produce exactamente estas aristas y el mismo peso total.
