@@ -92,10 +92,10 @@ int main(int argc, char* argv[]) {
     vector<Solicitud> solicitudesOriginales = solicitudes; // El Módulo B usa el orden original del dataset.
 
     cout << "Registros cargados: " << solicitudes.size() << endl;
-    cout << "Registros con TotalCharges núlo: " << nulos << endl;
+    cout << "Registros con TotalCharges nulo: " << nulos << endl;
 
     // ------------------ Modulo A: MergeSort y búsqueda binaria ---------------
-    cout << "Ids resultantes de la búsqueda binaria" << endl;
+    cout << "Ids resultantes de la busqueda binaria" << endl;
     mergeSort(solicitudes, 0, static_cast<int>(solicitudes.size()) - 1);
 
     int KIds[] = {72, 60, 45, 30, 12};
@@ -146,13 +146,13 @@ int main(int argc, char* argv[]) {
 
     writeModuleBReport(graph, mst, witness, firstFiveMst);
 
-    cout << "Módulo B completado" << endl;
+    cout << "Modulo B completado" << endl;
     cout << "Nodos: " << graph.nodes << ", aristas: " << graph.edgesCount << endl;
     cout << "Peso total MST: " << mst.totalWeight << endl;
     cout << "Archivo generado: results/mst_red.txt" << endl;
 
     // ------------------ Medir los tiempos ---------------
-    cout << "Tiempos dependiendo del tamaño" << endl;
+    cout << "Tiempos dependiendo del tamano" << endl;
     vector<int> testTimeSize = {1000, 3500, 7043};
     for (int sampleSize : testTimeSize) {
         vector<Solicitud> sample(solicitudesOriginales.begin(), solicitudesOriginales.begin() + sampleSize);
@@ -163,7 +163,7 @@ int main(int argc, char* argv[]) {
 
         chrono::duration<double, milli> duration = end - start;
         cout << fixed << setprecision(2);
-        cout << "Tamaño " << sampleSize << ": " << duration.count() << " ms" << endl;
+        cout << "tamano " << sampleSize << ": " << duration.count() << " ms" << endl;
     }
 
     return 0;
