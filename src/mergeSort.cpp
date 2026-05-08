@@ -1,32 +1,33 @@
-#include "mergeSort.hpp"
+#include "mergesort.hpp"
+
 using namespace std;
 
-void merge(vector<Solicitud> &arr, int left, int mid, int right) {
-    vector<Solicitud> l(arr.begin() + left, arr.begin() + mid + 1); // Vectores temporales
+void merge(vector<Solicitud>& arr, int left, int mid, int right) {
+    vector<Solicitud> l(arr.begin() + left, arr.begin() + mid + 1);
     vector<Solicitud> r(arr.begin() + mid + 1, arr.begin() + right + 1);
 
-    int i = 0, j = 0, k = left;
-    while(i < l.size() && j < r.size()) { //comparar elementos y escribir el mayor en arr
-        if(l[i].tenure >= r[j].tenure) {
+    int i = 0;
+    int j = 0;
+    int k = left;
+
+    while (i < static_cast<int>(l.size()) && j < static_cast<int>(r.size())) {
+        // >= mantiene la estabilidad: ante empate por tenure se conserva el orden original.
+        if (l[i].tenure >= r[j].tenure) {
             arr[k++] = l[i++];
         } else {
             arr[k++] = r[j++];
         }
     }
-    while(i < l.size()){ // Copiar elementos restantes
-        arr[k++] = l[i++];
-    }
-    while(j < r.size()) {
-        arr[k++] = r[j++];
-    }
+
+    while (i < static_cast<int>(l.size())) arr[k++] = l[i++];
+    while (j < static_cast<int>(r.size())) arr[k++] = r[j++];
 }
-void mergeSort(vector<Solicitud> &arr, int left, int right) {
-    if (left >= right) return; //Caso base, un solo elemento ordenado
 
-    int mid = left + (right - left) / 2;//Calcular el punto medio(aquí resto primero para evitar overflow)
+void mergeSort(vector<Solicitud>& arr, int left, int right) {
+    if (left >= right) return;
 
-    mergeSort(arr, left, mid); //Ordenar cada mitad
+    int mid = left + (right - left) / 2;
+    mergeSort(arr, left, mid);
     mergeSort(arr, mid + 1, right);
-
-    merge(arr, left, mid, right); //combinar mitades ordenadas
+    merge(arr, left, mid, right);
 }

@@ -1,14 +1,14 @@
 #pragma once
+
 #include <string>
 #include <vector>
-using namespace std;
 
 struct Solicitud {
-    string id;
-    int tenure;
-    float monthlyCharges;
-    float totalCharges;
-    string churn;
+    std::string id;
+    int tenure = 0;
+    double monthlyCharges = 0.0;
+    double totalCharges = 0.0;
+    std::string churn;
 };
 
-vector<Solicitud> ParsearCSV(const string& ruta, int& nulos);
+std::vector<Solicitud> ParsearCSV(const std::string& ruta, int& nulos);

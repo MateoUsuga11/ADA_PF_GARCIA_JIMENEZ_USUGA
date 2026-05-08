@@ -1,0 +1,45 @@
+MODULO C - Asignacion de ancho de banda (Mochila 0-1)
+====================================================
+
+Capacidad W: 500 unidades
+Peso wi: TotalCharges redondeado al entero mas cercano
+Valor vi: MonthlyCharges * 10 redondeado
+
+1. Ejecucion literal del enunciado
+Conjunto usado: primeras 50 solicitudes activas de mayor tenure despues del MergeSort.
+Cantidad de solicitudes: 50
+Peso minimo del conjunto literal: 1363
+Peso maximo del conjunto literal: 8468
+Solicitudes con peso <= W: 0
+Valor optimo total: 0
+Peso total seleccionado: 0
+Numero de solicitudes seleccionadas: 0
+customerID seleccionados: NINGUNA
+Observacion: con el dataset real, todos los pesos de estas 50 solicitudes superan W=500; por tanto, la solucion literal es vacia y no permite construir un contraejemplo codicioso dentro de ese mismo conjunto.
+
+2. Ejecucion complementaria reproducible para evidenciar PD y el fallo codicioso
+Ajuste minimo aplicado: tomar las primeras 50 solicitudes activas de mayor tenure con 0 < peso <= W.
+Este bloque no reemplaza el resultado literal anterior; se incluye porque el enunciado exige un contraejemplo que el conjunto literal no contiene.
+Cantidad de solicitudes: 50
+Valor optimo total: 249
+Peso total seleccionado: 493
+Numero de solicitudes seleccionadas: 1
+customerID seleccionados: 9092-GDZKO
+
+Solicitudes seleccionadas por PD (customerID, tenure, peso, valor, ratio):
+9092-GDZKO, 22, 493, 249, 0.5051
+
+3. Contraejemplo explicito del enfoque codicioso por ratio v/w
+Tres solicitudes usadas (customerID, tenure, peso, valor, ratio):
+9950-MTGYX, 28, 488, 203, 0.4160
+5171-EPLKN, 27, 470, 199, 0.4234
+7956-XQWGU, 27, 460, 194, 0.4217
+
+Enfoque                     Solicitudes seleccionadas           Valor total     Optimo
+Codicioso (ratio v/w)       5171-EPLKN                          199             No
+PD (Mochila 0-1)            9950-MTGYX                          203             Si
+
+4. Analisis de complejidad
+La tabla dp tiene (n+1)*(W+1) celdas. Cada celda se calcula en O(1), por lo que el tiempo es Theta(n*W).
+El espacio tambien es Theta(n*W) porque se conserva la tabla completa para hacer backtracking y recuperar los customerID seleccionados.
+El algoritmo es pseudopolinomial: es polinomial en el valor numerico W, pero no necesariamente en el tamano en bits de la entrada, que representa W con log2(W) bits.

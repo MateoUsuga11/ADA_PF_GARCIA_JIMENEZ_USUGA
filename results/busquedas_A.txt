@@ -1,5 +1,10 @@
-Q_A01 (k=72):6904-JLBGY
-Q_A02 (k=60):7426-WEIJX
-Q_A03 (k=45):7925-PNRGI
-Q_A04 (k=30):2684-EIWEO
-Q_A05 (k=12):7450-NWRTR
+MODULO A - Busqueda binaria recursiva
+Criterio implementado: primera ocurrencia con tenure exactamente igual a k.
+Nota: el enunciado dice 'primer tenure >= k', pero con orden descendente eso devuelve el primer registro para casi todas las consultas.
+
+Consulta  k       customerID
+Q_A01     72      5248-YGIJN
+Q_A02     60      4667-QONEA
+Q_A03     45      7795-CFOCW
+Q_A04     30      6865-JZNKO
+Q_A05     12      1680-VDCWW

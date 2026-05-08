@@ -1,3 +1,5 @@
+#include <vector>
+
 #include "parser.hpp"
 
-int binarySearch(vector<Solicitud> &arr, int left, int right, int k);
+int binarySearch(std::vector<Solicitud> &arr, int left, int right, int k);

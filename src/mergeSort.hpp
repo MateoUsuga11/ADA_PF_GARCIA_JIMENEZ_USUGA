@@ -1,4 +1,7 @@
-#include "parser.hpp"
+#pragma once
 
-void merge(vector<Solicitud>& arr, int left, int mid, int right);
-void mergeSort(vector<Solicitud>& arr, int left, int right);
+#include "parser.hpp"
+#include <vector>
+
+void merge(std::vector<Solicitud>& arr, int left, int mid, int right);
+void mergeSort(std::vector<Solicitud>& arr, int left, int right);

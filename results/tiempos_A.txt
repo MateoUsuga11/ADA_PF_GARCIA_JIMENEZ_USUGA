@@ -1,0 +1,7 @@
+MODULO A - Tiempos empiricos de MergeSort
+Los tiempos corresponden a la mediana de 7 ejecuciones por tamano.
+
+n           tiempo_ms       n_log2_n        tiempo/(nlogn)
+1000        0.438300        9965.784285     0.000044
+3500        1.718100        41205.987224    0.000042
+7043        4.533000        90023.445470    0.000050

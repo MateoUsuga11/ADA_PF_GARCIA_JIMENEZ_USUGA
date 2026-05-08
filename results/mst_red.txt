@@ -58,7 +58,7 @@ Arista concreta del grafo descartada por formar ciclo: (12, 16, 123).
 Camino ya seleccionado entre sus extremos al momento de evaluarla:
 (1, 12, 122)
 (1, 16, 123)
-La arista descartada tiene costo 123 y no es menor que las aristas del camino que cierra el ciclo; por tanto, puede eliminarse segun el lema del ciclo.
+Al agregar la arista descartada al camino anterior se forma un ciclo. Como la arista fue considerada despues de las del camino, su costo no es menor; por el lema del ciclo puede excluirse sin afectar el MST.
 
 4. Verificacion en el subgrafo inducido por los primeros 5 nodos
 Aristas seleccionadas manualmente al revisar los costos en orden ascendente y evitar ciclos:
